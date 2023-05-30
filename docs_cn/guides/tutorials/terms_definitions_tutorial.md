@@ -1,4 +1,4 @@
-Llama Index有许多使用案例（语义搜索，摘要等），这些都有[很好的文档](https://gpt-index.readthedocs.io/en/latest/use_cases/queries.html)。但是，这并不意味着我们不能将Llama Index应用于非常特定的用例！
+Llama Index有许多使用案例（语义搜索，摘要等)，这些都有[很好的文档](https://gpt-index.readthedocs.io/en/latest/use_cases/queries.html)。但是，这并不意味着我们不能将Llama Index应用于非常特定的用例！
 
 在本教程中，我们将深入了解使用Llama Index从文本中提取术语和定义的设计过程，同时允许用户稍后查询这些术语。使用[Streamlit](https://streamlit.io/)，我们可以提供一个易于构建的前端来运行和测试所有这些，并快速迭代我们的设计。
 
@@ -27,7 +27,7 @@ if st.button("Extract Terms and Definitions") and document_text:
     st.write(extracted_terms)
 ```
 
-太简单了！但是您会注意到应用程序还没有做任何有用的事情。要使用llama_index，我们还需要设置OpenAI LLM。LLM有很多可能的设置，所以我们可以让用户找出最好的设置。我们还应该让用户设置提取术语的提示（这也将有助于我们调试什么最好）。
+太简单了！但是您会注意到应用程序还没有做任何有用的事情。要使用llama_index，我们还需要设置OpenAI LLM。LLM有很多可能的设置，所以我们可以让用户找出最好的设置。我们还应该让用户设置提取术语的提示（这也将有助于我们调试什么最好)。
 
 ## LLM设置
 
@@ -81,17 +81,17 @@ document_text = st.text_area("或输入原始文本")
 
 从llama_index导入Document，GPTListIndex，LLMPredictor，ServiceContext，PromptHelper，load_index_from_storage
 
-def get_llm（llm_name，model_temperature，api_key，max_tokens = 256）：
+def get_llm（llm_name，model_temperature，api_key，max_tokens = 256)：
     os.environ['OPENAI_API_KEY'] = api_key
     if llm_name == "text-davinci-003":
-        return OpenAI（temperature = model_temperature，model_name = llm_name，max_tokens = max_tokens）
+        return OpenAI（temperature = model_temperature，model_name = llm_name，max_tokens = max_tokens)
     else：
-        return ChatOpenAI（temperature = model_temperature，model_name = llm_name，max_tokens = max_tokens）
+        return ChatOpenAI（temperature = model_temperature，model_name = llm_name，max_tokens = max_tokens)
 
-def extract_terms（documents，term_extract_str，llm_name，model_temperature，api_key）：
-    llm = get_llm（llm_name，model_temperature，api_key，max_tokens = 1024）
+def extract_terms（documents，term_extract_str，llm_name，model_temperature，api_key)：
+    llm = get_llm（llm_name，model_temperature，api_key，max_tokens = 1024)
 
-    service_context = ServiceContext.from_defaults（llm_predictor = LLMPredictor（llm = llm），
+    service_context = ServiceContext.from_defaults（llm_predictor = LLMPredictor（llm = llm)，
                                                    prompt_helper = PromptHelper（max_input_size = 4096，
                                                                               max_chunk_overlap = 20，现在，使用新的函数，我们终于可以提取我们的术语了！
 
@@ -110,9 +110,9 @@ with upload_tab:
 
 现在发生了很多事情，让我们花一点时间来回顾一下发生了什么。
 
-`get_llm()`根据设置选项卡中的用户配置实例化LLM。根据模型名称，我们需要使用适当的类（`OpenAI`与`ChatOpenAI`）。
+`get_llm()`根据设置选项卡中的用户配置实例化LLM。根据模型名称，我们需要使用适当的类（`OpenAI`与`ChatOpenAI`)。
 
-`extract_terms()`是所有好东西发生的地方。首先，我们使用`max_tokens = 1024`调用`get_llm()`，因为我们不想在提取术语和定义时过多限制模型（如果未设置，默认值为256）。然后，我们定义我们的`ServiceContext`对象，将`num_output`与我们的`max_tokens`值对齐，并将块大小设置为不大于输出。当文档由Llama Index索引时，如果它们很大，它们将被分割成块（也称为节点），并且`chunk_size_limit`设置了这些块的最大大小。
+`extract_terms()`是所有好东西发生的地方。首先，我们使用`max_tokens = 1024`调用`get_llm()`，因为我们不想在提取术语和定义时过多限制模型（如果未设置，默认值为256)。然后，我们定义我们的`ServiceContext`对象，将`num_output`与我们的`max_tokens`值对齐，并将块大小设置为不大于输出。当文档由Llama Index索引时，如果它们很大，它们将被分割成块（也称为节点)，并且`chunk_size_limit`设置了这些块的最大大小。
 
 接下来，我们创建一个临时列表索引并传入我们的服务上下文。列表索引将读取索引中的每一个文本，这对于提取术语非常完美。最后，我们使用预定义的查询文本使用`response_mode =“tree_summarize”`提取术语。此响应模式将从底部开始生成摘要树，其中每个父级概括其子级。最后，返回树的顶部，其中包含所有提取的术语和定义。最后，我们做一些小的后处理。我们假设模型按照说明执行，并在每行放置一个术语/定义对。如果缺少`Term：`或`Definition：`标签，我们将跳过它。然后，我们将其转换为字典以便于存储！
 
@@ -154,7 +154,7 @@ with upload_tab:
     如果'st.session_state'中有"llama_index"：
         st.markdown("上传文档的图像/屏幕截图，或手动输入文本。")
         document_text = st.text_area("或输入原始文本")
-        如果st.button("提取术语和定义")并且（uploaded_file或document_text）：
+        如果st.button("提取术语和定义")并且（uploaded_file或document_text)：
             st.session_state['terms'] = {}
             terms_docs = {}
             with st.spinner("提取中..."):
@@ -174,36 +174,36 @@ with upload_tab:
 ...
 setup_tab，terms_tab，upload_tab，query_tab = st.tabs（
     ["设置"，"所有术语"，"上传/提取术语"，"查询术语"]
-）
+)
 ...
 with terms_tab：
     with terms_tab：
-    st.subheader（"当前提取的术语和定义"）
-    st.json（st.session_state ["all_terms"]）
+    st.subheader（"当前提取的术语和定义")
+    st.json（st.session_state ["all_terms"])
 ...
 with query_tab：
-    st.subheader（"查询术语/定义！"）
+    st.subheader（"查询术语/定义！")
     st.markdown（
         （
             "LLM将尝试回答您的查询，并使用您插入的术语/定义来增强它的答案。"
             "如果索引中没有该术语，它将使用其内部知识回答查询。"
-        ）
-    ）
-    如果st.button（"初始化索引并重置术语"，key ="init_index_2"）：
+        )
+    )
+    如果st.button（"初始化索引并重置术语"，key ="init_index_2")：
         st.session_state ["llama_index"] = initialize_index（
             llm_name，model_temperature，api_key
-        ）
+        )
         st.session_state ["all_terms"] = {}
 
     如果"llama_index"在st.session_state中：
-        query_text = st.text_input（"查询术语或定义："）
+        query_text = st.text_input（"查询术语或定义：")
         如果query_text：
             query_text = query_text + "\n如果您找不到答案，请根据您的最佳知识回答查询。"
-            with st.spinner（"生成答案..."）：
+            with st.spinner（"生成答案...")：
                 response = st.session_state ["llama_index"]。query（
                     query_text，similarity_top_k = 5，response_mode ="compact"
-                ）
-            st.markdown（str（response））
+                )
+            st.markdown（str（response))
 ```
 
 虽然这主要是基本的，但要注意一些重要的事情：
@@ -243,7 +243,7 @@ def insert_terms(terms_to_definition):
 
 现在，我们需要一些文档来提取！本项目的存储库使用了有关纽约市的维基百科页面，您可以在[这里](https://github.com/jerryjliu/llama_index/blob/main/examples/test_wiki/data/nyc_text.txt)找到文本。
 
-如果您将文本粘贴到上传选项卡中并运行它（可能需要一些时间），我们可以插入提取的te从langchain.chains.prompt_selec中，确保也将提取的术语的文本复制到记事本或类似的文件中，然后再插入索引！我们马上就需要它们了。插入后，删除我们用来将索引保存到磁盘的代码行。现在已经保存了起始索引，我们可以修改我们的“initialize_index”函数，看起来像这样：
+如果您将文本粘贴到上传选项卡中并运行它（可能需要一些时间)，我们可以插入提取的te从langchain.chains.prompt_selec中，确保也将提取的术语的文本复制到记事本或类似的文件中，然后再插入索引！我们马上就需要它们了。插入后，删除我们用来将索引保存到磁盘的代码行。现在已经保存了起始索引，我们可以修改我们的“initialize_index”函数，看起来像这样：
 
 ```python
 @st.cache_resource
@@ -269,16 +269,16 @@ if "all_terms" not in st.session_state:
 
 在以前重置“all_terms”值的任何地方重复以上内容。
 
-## 改进#2 -（细化）更好的提示
+## 改进#2 -（细化)更好的提示
 
-现在，如果你玩一下这个应用程序，你可能会注意到它不再遵循我们的提示！记住，我们向我们的“query_str”变量添加了，如果找不到术语/定义，就按照它的最佳知识回答。但是现在，如果你尝试查询随机术语（比如bunnyhug！），它可能会遵循这些指令，也可能不会遵循这些指令。
+现在，如果你玩一下这个应用程序，你可能会注意到它不再遵循我们的提示！记住，我们向我们的“query_str”变量添加了，如果找不到术语/定义，就按照它的最佳知识回答。但是现在，如果你尝试查询随机术语（比如bunnyhug！)，它可能会遵循这些指令，也可能不会遵循这些指令。
 
 这是由于“细化”答案的概念。由于我们在前5个匹配结果中查询，有时所有结果都不适合单个提示！OpenAI模型通常具有4097个令牌的最大输入大小。因此，Llama Index通过将匹配结果分割为适合提示的块来解决此问题。 Llama Index从第一个API调用获得初始答案后，将下一块发送到API，并且使用先前的答案向模型请求细化该答案。
 
-因此，细化过程似乎正在破坏我们的结果！不要将额外的指令附加到“query_str”中，而是删除它，Llama Index将允许我们提供自己的自定义提示！现在让我们使用[默认提示]（https://github.com/jerryjliu/llama_index/blob/main/llama_index/prompts/default_prompts.py）和[聊天特定提示]（https://github.com/jerryjliu/llama_index/blob/main/llama_index/prompts/chat_prompts.py）作为指南创建它们。使用一个新的文件“constants.py”，让我们创建一些新的查询模板：
+因此，细化过程似乎正在破坏我们的结果！不要将额外的指令附加到“query_str”中，而是删除它，Llama Index将允许我们提供自己的自定义提示！现在让我们使用[默认提示](https://github.com/jerryjliu/llama_index/blob/main/llama_index/prompts/default_prompts.py)和[聊天特定提示](https://github.com/jerryjliu/llama_index/blob/main/llama_index/prompts/chat_prompts.py)作为指南创建它们。使用一个新的文件“constants.py”，让我们创建一些新的查询模板：
 
 ```python
-from langchain.chains.prompt_selec这看起来像很多代码，但其实并不复杂！如果你看过默认提示，你可能已经注意到有默认提示，也有针对聊天模型的提示。继续这一趋势，我们也为我们的自定义提示做同样的事情。然后，使用提示选择器，我们可以组合我们的自定义提示，以便在不同的模型中使用。我们可以将这两个提示合并为一个对象。如果使用的LLM是聊天模型（ChatGPT，GPT-4），则使用聊天提示。否则，使用正常的提示模板。
+from langchain.chains.prompt_selec这看起来像很多代码，但其实并不复杂！如果你看过默认提示，你可能已经注意到有默认提示，也有针对聊天模型的提示。继续这一趋势，我们也为我们的自定义提示做同样的事情。然后，使用提示选择器，我们可以组合我们的自定义提示，以便在不同的模型中使用。我们可以将这两个提示合并为一个对象。如果使用的LLM是聊天模型（ChatGPT，GPT-4)，则使用聊天提示。否则，使用正常的提示模板。
 
 另外要注意的是，我们只定义了一个QA模板。在聊天模型中，这将被转换为一条“人类”消息。
 
@@ -288,7 +288,7 @@ from langchain.chains.prompt_selec这看起来像很多代码，但其实并不�
 
 ## 改进#3 - 图像支持
 
-Llama index也支持图像！使用Llama Index，我们可以上传文档（论文，信件等）的图像，Llama Index处理提取文本。我们可以利用这一点，也允许用户上传他们文档的图像，并从中提取术语和定义。
+Llama index也支持图像！使用Llama Index，我们可以上传文档（论文，信件等)的图像，Llama Index处理提取文本。我们可以利用这一点，也允许用户上传他们文档的图像，并从中提取术语和定义。
 
 如果你得到一个关于PIL的导入错误，首先使用`pip install Pillow`安装它。
 
@@ -328,5 +328,5 @@ with upload_tab:
             "上传文档的图像/屏幕截图："
         )在这篇教程中，我们涵盖了大量信息，同时解决了一些常见的问题和问题：
 
-- 使用不同的索引用于不同的用例（列表vs.向量索引）
+- 使用不同的索引用于不同的用例（列表vs.向量索引)
 - 使用Streamlit的“session_sta”存储全局状态值本教程的最终版本可以在[这里](https://github.com/logan-markewich/llama_index_starter_pack)找到，并且可以在[Huggingface Spaces](https://huggingface.co/spaces/llamaindex/llama_index_term_definition_demo)上访问一个在线演示。使用Llama Index自定义内部提示和从图像中读取文本。

@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/5049984/233236432-aa4980b6-a510-42f3-8
 
 Delphic利用LlamaIndex python库，让用户可以创建自己的文档集合，然后在响应式前端中查询。
 
-我们选择了一个堆栈，它提供了一个响应式、强大的技术混合，可以（1）协调复杂的python处理任务，同时提供（2）现代、响应式的前端和（3）安全的后端，以便构建额外的功能。
+我们选择了一个堆栈，它提供了一个响应式、强大的技术混合，可以（1)协调复杂的python处理任务，同时提供（2)现代、响应式的前端和（3)安全的后端，以便构建额外的功能。
 
 核心库是：
 
@@ -28,7 +28,7 @@ Delphic利用LlamaIndex python库，让用户可以创建自己的文档集合�
 
 ## 系统要求
 
-Celery不能在Windows上工作。它可以通过Windows子系统进行部署，但配置超出了本教程的范围。因此，我们建议您只有在运行Linux或OSX时才遵循本教程。您需要安装Docker和Docker Compose才能部署应用程序。本地开发将需要节点版本管理器（nvm）。
+Celery不能在Windows上工作。它可以通过Windows子系统进行部署，但配置超出了本教程的范围。因此，我们建议您只有在运行Linux或OSX时才遵循本教程。您需要安装Docker和Docker Compose才能部署应用程序。本地开发将需要节点版本管理器（nvm)。
 
 ## Django后端
 
@@ -43,7 +43,7 @@ Delphic应用程序具有结构化的后端目录组织，遵循常见的Django�
 
 2. `/collections/create`：一个POST端点，用于创建新的`Collection`。接受表单参数，如`title`，`description`和`files`列表。为每个文件创建新的`Collection`和`Document`实例，并调度Celery任务来创建索引。
 
-3. `/collections/query` - 一个POST端点，用于使用LLM查询文档集合。接受包含`collection_id`和`query_str`的JSON有效负载，并返回通过查询集合生成的响应。我们实际上没有在聊天GUI中使用此端点（我们使用WebSocket - 请参见下文），但您可以构建一个应用程序来集成到此REST端点以查询特定的集合。WebSocket是一种通信协议，可在单个长期连接上在客户端和服务器之间实现双向全双工通信。 WebSocket协议设计用于在HTTP和HTTPS（端口80和443）的相同端口上工作，并使用类似的握手过程来建立连接。一旦建立连接，就可以在两个方向上发送“帧”数据，而无需每次重新建立连接，与传统的HTTP请求不同。
+3. `/collections/query` - 一个POST端点，用于使用LLM查询文档集合。接受包含`collection_id`和`query_str`的JSON有效负载，并返回通过查询集合生成的响应。我们实际上没有在聊天GUI中使用此端点（我们使用WebSocket - 请参见下文)，但您可以构建一个应用程序来集成到此REST端点以查询特定的集合。WebSocket是一种通信协议，可在单个长期连接上在客户端和服务器之间实现双向全双工通信。 WebSocket协议设计用于在HTTP和HTTPS（端口80和443)的相同端口上工作，并使用类似的握手过程来建立连接。一旦建立连接，就可以在两个方向上发送“帧”数据，而无需每次重新建立连接，与传统的HTTP请求不同。
 
 使用WebSockets有几个原因，特别是在处理需要花费很长时间加载到内存中但一旦加载就很快运行的代码时：
 
@@ -117,9 +117,9 @@ async def receive(self, text_data):
         await self.send(json.dumps({"error": "No index loaded for this connection."}, indent=4))
 ```
 
-要加载集合模型，使用`load_collection_model`函数，该函数可以在[`delphic/utils/collections.py`](https://github.com/JSv4/Delphic/blob/main/delphic/utils/collections.py)中找到。该函数使用给定的集合ID检索集合对象，检查集合模型的JSON文件是否存在，如果不存在，则创建一个。然后，在使用缓存文件加载`GPTVectorStoreIndex`之前，它会设置`LLMPredictor`和`ServiceContext`。我们选择使用TypeScript，React和Material-UI（MUI）作为Delphic项目的前端，原因有几个。首先，作为最受欢迎的组件库（MUI）和最受欢迎的前端框架（React），这个选择可以让我们节省大量的时间和精力。其次，TypeScript提供了更多的类型安全性，可以帮助我们更快地开发和调试应用程序。React使这个项目可以访问大量的开发者社区。其次，React目前是一个稳定且普遍受欢迎的框架，它通过其虚拟DOM提供有价值的抽象，同时仍然相对稳定，在我们看来，学习起来也相对容易，这也使它变得更加容易访问。
+要加载集合模型，使用`load_collection_model`函数，该函数可以在[`delphic/utils/collections.py`](https://github.com/JSv4/Delphic/blob/main/delphic/utils/collections.py)中找到。该函数使用给定的集合ID检索集合对象，检查集合模型的JSON文件是否存在，如果不存在，则创建一个。然后，在使用缓存文件加载`GPTVectorStoreIndex`之前，它会设置`LLMPredictor`和`ServiceContext`。我们选择使用TypeScript，React和Material-UI（MUI)作为Delphic项目的前端，原因有几个。首先，作为最受欢迎的组件库（MUI)和最受欢迎的前端框架（React)，这个选择可以让我们节省大量的时间和精力。其次，TypeScript提供了更多的类型安全性，可以帮助我们更快地开发和调试应用程序。React使这个项目可以访问大量的开发者社区。其次，React目前是一个稳定且普遍受欢迎的框架，它通过其虚拟DOM提供有价值的抽象，同时仍然相对稳定，在我们看来，学习起来也相对容易，这也使它变得更加容易访问。
 
-前端项目结构可以在存储库的[`/frontend`]（https://github.com/JSv4/Delphic/tree/main/frontend）目录中找到，与React相关的组件位于`/frontend/src`中。您会注意到`frontend`目录中有一个DockerFile和几个与配置我们的前端Web服务器[nginx]（https://www.nginx.com/）相关的文件夹和文件。
+前端项目结构可以在存储库的[`/frontend`](https://github.com/JSv4/Delphic/tree/main/frontend)目录中找到，与React相关的组件位于`/frontend/src`中。您会注意到`frontend`目录中有一个DockerFile和几个与配置我们的前端Web服务器[nginx](https://www.nginx.com/)相关的文件夹和文件。
 
 `/frontend/src/App.tsx`文件用作应用程序的入口点。它定义了主要组件，例如登录表单，抽屉布局和集合创建模态。根据用户是否已登录并具有身份验证令牌，将有条件地呈现主要组件。
 
@@ -140,7 +140,7 @@ const[loading, setLoading] = useState(true);
 
 在这里，我们初始化两个状态变量：`collections`用于存储集合列表，`loading`用于跟踪是否正在获取集合。
 
-2.使用`fetchCollections（）`函数获取登录用户的集合：
+2.使用`fetchCollections（)`函数获取登录用户的集合：
 
 ```tsx
 const
@@ -178,42 +178,42 @@ setLoading(false);
 
 const websocket = useRef<WebSocket | null>(null);
 
-使用`useRef`创建`websocket`引用，该引用保存将用于通信的WebSocket对象。 `useRef`是React中的一个钩子，允许您创建一个持久的可变引用对象，跨渲染。 当您需要保留对可变对象（例如WebSocket连接）的引用时，它特别有用，而不会引起不必要的重新渲染。
+使用`useRef`创建`websocket`引用，该引用保存将用于通信的WebSocket对象。 `useRef`是React中的一个钩子，允许您创建一个持久的可变引用对象，跨渲染。 当您需要保留对可变对象（例如WebSocket连接)的引用时，它特别有用，而不会引起不必要的重新渲染。
 
-在`ChatView`组件中，需要在组件的生命周期内建立和维护WebSocket连接，并且当连接状态更改时不应触发重新渲染。 通过使用`useRef`，您可以确保将WebSocket连接保留为引用，并且仅在实际状态更改时（例如更新消息或显示错误）才重新渲染组件。
+在`ChatView`组件中，需要在组件的生命周期内建立和维护WebSocket连接，并且当连接状态更改时不应触发重新渲染。 通过使用`useRef`，您可以确保将WebSocket连接保留为引用，并且仅在实际状态更改时（例如更新消息或显示错误)才重新渲染组件。
 
 `setupWebsocket`函数负责建立WebSocket连接并设置事件处理程序以处理不同的WebSocket事件。
 
 总的来说，setupWebsocket函数看起来像这样：
 
 ```tsx
-const setupWebsocket = () => {  
-  setConnecting(true);  
-  // 在这里，使用指定的URL创建一个新的WebSocket对象，其中包括所选集合的ID和用户的身份验证令牌。  
-    
-  websocket.current = new WebSocket(  
-    `ws://localhost:8000/ws/collections/${selectedCollection.id}/query/?token=${authToken}`  
-  );  
-  
-  websocket.current.onopen = (event) => {  
-    //...  
-  };  
-  
-  websocket.current.onmessage = (event) => {  
-    //...  
-  };  
-  
-  websocket.current.onclose = (event) => {  
-    //...  
-  };  
-  
-  websocket.current.onerror = (event) => {  
-    //...  
-  };  
-  
-  return () => {  
-    websocket.current?.close();  
-  };  
+const setupWebsocket = () => {
+  setConnecting(true);
+  // 在这里，使用指定的URL创建一个新的WebSocket对象，其中包括所选集合的ID和用户的身份验证令牌。
+
+  websocket.current = new WebSocket(
+    `ws://localhost:8000/ws/collections/${selectedCollection.id}/query/?token=${authToken}`
+  );
+
+  websocket.current.onopen = (event) => {
+    //...
+  };
+
+  websocket.current.onmessage = (event) => {
+    //...
+  };
+
+  websocket.current.onclose = (event) => {
+    //...
+  };
+
+  websocket.current.onerror = (event) => {
+    //...
+  };
+
+  return () => {
+    websocket.current?.close();
+  };
 };
 ```
 
@@ -224,50 +224,50 @@ const setupWebsocket = () => {
 所有这些功能都使用户能够以非常流畅，低延迟的体验与所选集合进行交互。当WebSocket连接建立时，侦听器被触发。在回调中，组件更新状态以反映连接已建立，任何先前的错误都已清除，并且没有消息正在等待响应：
 
 ```tsx
-websocket.current.onopen = (event) => {  
-  setError(false);  
-  setConnecting(false);  
-  setAwaitingMessage(false);  
-  
-  console.log("WebSocket connected:", event);  
+websocket.current.onopen = (event) => {
+  setError(false);
+  setConnecting(false);
+  setAwaitingMessage(false);
+
+  console.log("WebSocket connected:", event);
 };
 ```
 
 当从服务器通过WebSocket连接接收到新消息时，`onmessage`被触发。在回调中，接收到的数据被解析，并且`messages`状态被更新为服务器发送的新消息：
 
 ```
-websocket.current.onmessage = (event) => {  
-  const data = JSON.parse(event.data);  
-  console.log("WebSocket message received:", data);  
-  setAwaitingMessage(false);  
-  
-  if (data.response) {  
-    // Update the messages state with the new message from the server  
-    setMessages((prevMessages) => [  
-      ...prevMessages,  
-      {  
-        sender_id: "server",  
-        message: data.response,  
-        timestamp: new Date().toLocaleTimeString(),  
-      },  
-    ]);  
-  }  
+websocket.current.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log("WebSocket message received:", data);
+  setAwaitingMessage(false);
+
+  if (data.response) {
+    // Update the messages state with the new message from the server
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        sender_id: "server",
+        message: data.response,
+        timestamp: new Date().toLocaleTimeString(),
+      },
+    ]);
+  }
 };
 ```
 
-当WebSocket连接关闭时，`onclose`被触发。在回调中，组件检查特定的关闭代码（`4000`）以显示警告提示，并相应地更新组件状态。它还记录关闭事件：
+当WebSocket连接关闭时，`onclose`被触发。在回调中，组件检查特定的关闭代码（`4000`)以显示警告提示，并相应地更新组件状态。它还记录关闭事件：
 
 ```tsx
-websocket.current.onclose = (event) => {  
-  if (event.code === 4000) {  
-    toast.warning(  
-      "Selected collection's model is unavailable. Was it created properly?"  
-    );  
-    setError(true);  
-    setConnecting(false);  
-    setAwaitingMessage(false);  
-  }  
-  console.log("WebSocket closed:", event);  
+websocket.current.onclose = (event) => {
+  if (event.code === 4000) {
+    toast.warning(
+      "Selected collection's model is unavailable. Was it created properly?"
+    );
+    setError(true);
+    setConnecting(false);
+    setAwaitingMessage(false);
+  }
+  console.log("WebSocket closed:", event);
 };
 ```
 
@@ -295,13 +295,13 @@ websocket.current.onclose = (event) => {
 
 ###先决条件
 
-要部署应用程序，您需要安装Docker和Docker Compose。如果您使用的是Ubuntu或其他常见的Linux发行版，DigitalOcean有一个很棒的Docker教程[great Docker tutorial]（https://www.digitalocean.com/community/tutorial_collections/how-to-install-and-use-docker）和另一个很棒的教程[Docker Compose]（https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04）您可以遵循。如果这些都不适合您，请尝试[官方docker文档]（https://docs.docker.com/engine/install/）。
+要部署应用程序，您需要安装Docker和Docker Compose。如果您使用的是Ubuntu或其他常见的Linux发行版，DigitalOcean有一个很棒的Docker教程[great Docker tutorial](https://www.digitalocean.com/community/tutorial_collections/how-to-install-and-use-docker)和另一个很棒的教程[Docker Compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04)您可以遵循。如果这些都不适合您，请尝试[官方docker文档](https://docs.docker.com/engine/install/)。
 
 ###构建和部署
 
 该项目基于django-cookiecutter，可以很容易地在VM上部署并配置为为特定域名提供HTTPS流量。然而，配置有些复杂-不是因为这个项目，而是因为配置证书，DNS等是一个相当复杂的主题。
 
-为了本指南的目的，让我们只是在本地运行。也许我们会发布一个关于生产部署的指南。与此同时，请查看[Django Cookiecutter项目文档]（https://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html）作为起点。
+为了本指南的目的，让我们只是在本地运行。也许我们会发布一个关于生产部署的指南。与此同时，请查看[Django Cookiecutter项目文档](https://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html)作为起点。
 
 本指南假定您的目标是将应用程序启动并运行以供使用。如果您想开发，则很可能不会使用--profiles fullstack标志启动compose堆栈，而是使用node开发服务器启动react前端。
 
@@ -311,7 +311,7 @@ websocket.current.onclose = (event) => {
 
 ###设置用户
 
-为了实际使用应用程序（目前，我们打算使其可以与未经认证的用户共享某些模型），您需要登录。您可以使用超级用户或非超级用户。在任何情况下，都需要有人首先使用控制台创建超级用户：
+为了实际使用应用程序（目前，我们打算使其可以与未经认证的用户共享某些模型)，您需要登录。您可以使用超级用户或非超级用户。在任何情况下，都需要有人首先使用控制台创建超级用户：
 
 **为什么要设置Django超级用户？** Django超级用户拥有应用程序中的所有权限，可以管理系统的所有方面，包括创建、修改和删除用户、集合和其他数据。设置超级用户可以让您完全控制和管理应用程序。
 

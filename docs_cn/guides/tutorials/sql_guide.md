@@ -1,7 +1,7 @@
 LlamaIndex提供了许多高级功能，由LLM驱动，既可以将非结构化数据转换为结构化数据，也可以通过增强的文本到SQL功能来分析这些结构化数据。
 本指南将帮助您了解这些功能。具体来说，我们将涵盖以下主题：
 -**推断结构化数据点**：将非结构化数据转换为结构化数据。
--**文本到SQL（基本）**：如何使用自然语言查询一组表。
+-**文本到SQL（基本)**：如何使用自然语言查询一组表。
 -**注入上下文**：如何为文本到SQL提示注入上下文。上下文可以手动添加，也可以从非结构化文档中派生。
 -**在索引中存储表上下文**：默认情况下，我们会直接将上下文插入提示中。有时，如果上下文很大，这是不可行的。在这里，我们将展示如何实际使用LlamaIndex数据结构来包含表上下文！
 我们将通过一个包含城市/人口/国家信息的玩具表格来讲解。
@@ -52,7 +52,7 @@ for row in rows:
 ```python
 from llama_index import SQLData基础
 
-sql_database = SQLDatabase（引擎，include_tables = ["city_stats"]）
+sql_database = SQLDatabase（引擎，include_tables = ["city_stats"])
 
 如果数据库已经填充了数据，我们可以使用空文档列表实例化SQL索引。否则请参阅下面的部分。
 
@@ -61,7 +61,7 @@ index = GPTSQLStructStoreIndex（
     []，
     sql_database = sql_database，
     table_name =“city_stats”，
-）
+)
 ```
 
 ## 推断结构数据点
@@ -73,8 +73,8 @@ LlamaIndex提供将非结构化数据点转换为结构化数据的功能。在�
 ```python
 from llama_index import download_loader
 
-WikipediaReader = download_loader（“WikipediaReader”）
-wiki_docs = WikipediaReader（）.load_data（pages = ['Toronto'，'Berlin'，'Tokyo']）
+WikipediaReader = download_loader（“WikipediaReader”)
+wiki_docs = WikipediaReader（).load_data（pages = ['Toronto'，'Berlin'，'Tokyo'])
 
 ```
 
@@ -83,14 +83,14 @@ wiki_docs = WikipediaReader（）.load_data（pages = ['Toronto'，'Berlin'，'T
 ```python
 from llama_index import GPTSQLStructStoreIndex，SQLDatabase
 
-sql_database = SQLDatabase（engine，include_tables = ["city_stats"]）
+sql_database = SQLDatabase（engine，include_tables = ["city_stats"])
 #注意：这里指定的表名是你
 #要从非结构化文档中提取的表。
 index = GPTSQLStructStoreIndex.from_documents（
     wiki_docs，
     sql_database = sql_database，
     table_name =“city_stats”，
-）
+)
 ```
 
 您可以查看当前表以验证数据点已插入！
@@ -98,15 +98,15 @@ index = GPTSQLStructStoreIndex.from_documents（
 ```python
 #查看当前表
 stmt = select（
-    [column（“city_name”），column（“population”），column（“country”）]
-）。从city_stats_table中选择
+    [column（“city_name”)，column（“population”)，column（“country”)]
+)。从city_stats_table中选择
 
-with engine.connect（）as connection：
-    results = connection.execute（stmt）.fetchall（）
-    print（results）
+with engine.connect（)as connection：
+    results = connection.execute（stmt).fetchall（)
+    print（results)
 ```
 
-## Text-to-SQL（基本）
+## Text-to-SQL（基本)
 
 LlamaIndex提供“text-to-SQL”功能，既可以在非常基本的层次上，也可以在更高级别上使用。在本节中，我们将展示如何在基本层次上使用这些text-to-SQL功能。
 
@@ -114,9 +114,9 @@ LlamaIndex提供“text-to-SQL”功能，既可以在非常基本的层次上�
 
 ```python
 #将Logging设置为DEBUG以获得更详细的输出
-query_engine = index.as_query_engine（）
-response = query_engine.query（“哪个城市人口最多？”）
-print（response）
+query_engine = index.as_query_engine（)
+response = query_engine.query（“哪个城市人口最多？”)
+print（response)
 
 ```
 
@@ -151,8 +151,8 @@ context_container = context_builder.build_context_container()
 
 # 构建索引
 index = GPTSQLStructStoreIndex.from_documents(
-    wiki_docs, 
-    sql_database=sql_database, 
+    wiki_docs,
+    sql_database=sql_database,
     table_name="city_stats",
     sql_context_container=context_container
 )
@@ -160,7 +160,7 @@ index = GPTSQLStructStoreIndex.from_documents(
 
 您还可以选择从一组非结构化文档中**提取**上下文。
 要做到这一点，您可以调用`SQLContextContainerBuilder.from_documents`。
-我们使用`TableContextPrompt`和`RefineTableContextPrompt`（参见[参考文档]（/ reference / prompts.rst））。
+我们使用`TableContextPrompt`和`RefineTableContextPrompt`（参见[参考文档](/ reference / prompts.rst))。
 
 ```python
 # 这是一个我们将从GPTSQLContextContainerBuilder中提取上下文的虚拟文档
@@ -169,15 +169,15 @@ city_stats_text = (
 )
 context_documents_dict = {"city_stats": [Document(city_stats_text)]}
 context_builder = SQLContextContainerBuilder.from_documents(
-    context_documents_dict, 
+    context_documents_dict,
     sql_database
 )
 context_container = context_builder.build_context_container()
 
 # 构建索引
 index = GPTSQLStructStoreIndex.from_documents(
-    wiki_docs, 
-    sql_database=sql_database, 
+    wiki_docs,
+    sql_database=sql_database,
     table_name="city_stats",
     sql_context_container=context_container,
 )

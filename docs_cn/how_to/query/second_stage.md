@@ -4,7 +4,7 @@
 1. **检索步骤**：根据查询从索引中检索一组节点。
 2. **综合步骤**：在节点集上综合响应。
 
-除了标准检索和综合之外，LlamaIndex还提供了一系列用于高级**二级处理**（即检索和综合之后）的模块。
+除了标准检索和综合之外，LlamaIndex还提供了一系列用于高级**二级处理**（即检索和综合之后)的模块。
 
 在检索初始候选节点后，这些模块通过例如过滤、重新排序或增强来进一步提高用于综合的节点的质量和多样性。示例包括关键字过滤器、基于LLM的重新排序和基于时间推理的增强。
 
@@ -51,13 +51,13 @@ query_engine = index.as_query_engine(
     node_postprocessors=[node_postprocessor]
 )
 response = query_engine.query(
-    "How much did the author raise in seed funding from Idelle's husband (Julian) for Viaweb?", 
+    "How much did the author raise in seed funding from Idelle's husband (Julian) for Viaweb?",
 )
 
 ```
 
 
-#### 作为独立模块使用（低级用法）
+#### 作为独立模块使用（低级用法)
 
 该模块也可以单独使用，作为更广泛流程的一部分。例如，这里有一个示例，您可以手动处理初始源节点集。
 

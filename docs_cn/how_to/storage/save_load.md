@@ -5,14 +5,14 @@
 ```python
 storage_context.persist(persist_dir="<persist_dir>")
 ```
-这将把数据持久化到磁盘上，在指定的`persist_dir`（或默认的`./storage`）下。
+这将把数据持久化到磁盘上，在指定的`persist_dir`（或默认的`./storage`)下。
 
 可以从同一个目录持久化和加载多个索引，只要你跟踪索引ID以便加载。
 
-用户还可以配置替代存储后端（例如`MongoDB`），它们默认情况下会持久化数据。在这种情况下，调用`storage_context.persist()`将不起作用。
+用户还可以配置替代存储后端（例如`MongoDB`)，它们默认情况下会持久化数据。在这种情况下，调用`storage_context.persist()`将不起作用。
 
 ## 加载数据
-要加载数据，用户只需使用相同的配置重新创建存储上下文（例如传入相同的`persist_dir`或向量存储客户端）即可。
+要加载数据，用户只需使用相同的配置重新创建存储上下文（例如传入相同的`persist_dir`或向量存储客户端)即可。
 
 ```python
 storage_context = StorageContext.from_defaults(
@@ -29,10 +29,10 @@ from llama_index import load_index_from_storage, load_indices_from_storage, load
 
 # 加载单个索引
 # 如果多个索引被持久化到同一个目录，则需要指定索引ID
-index = load_index_from_storage(storage_context, index_id="<index_id>") 
+index = load_index_from_storage(storage_context, index_id="<index_id>")
 
 # 如果存储上下文中只有一个索引，则不需要指定索引ID
-index = load_index_from_storage(storage_context) 
+index = load_index_from_storage(storage_context)
 
 # 加载多个索引
 indices = load_indices_from_storage(storage_context) # 加载所有索引

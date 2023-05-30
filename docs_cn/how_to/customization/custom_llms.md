@@ -3,15 +3,15 @@ LlamaIndex的目标是提供一组数据结构，以便以LLM的提示限制易�
 
 LlamaIndex使用Langchain的[LLM](https://python.langchain.com/en/latest/modules/models/llms.html)和[LLMChain](https://langchain.readthedocs.io/en/latest/modules/chains.html)模块来定义底层抽象。我们引入了一个包装类[`LLMPredictor`](/reference/service_context/llm_predictor.rst)，用于集成到LlamaIndex中。
 
-我们还引入了一个[`PromptHelper`类](/reference/service_context/prompt_helper.rst)，以允许用户明确设置某些约束参数，例如最大输入大小（davinci模型的默认值为4096）、生成的输出令牌数、最大块重叠等等。
+我们还引入了一个[`PromptHelper`类](/reference/service_context/prompt_helper.rst)，以允许用户明确设置某些约束参数，例如最大输入大小（davinci模型的默认值为4096)、生成的输出令牌数、最大块重叠等等。
 
 默认情况下，我们使用OpenAI的`text-davinci-003`模型。但是您可以选择自定义所使用的底层LLM。
 
 下面我们展示一些LLM自定义的示例。这包括
 
 - 更改底层LLM
-- 更改输出令牌数（用于OpenAI、Cohere或AI21）
-- 对任何LLM的所有参数（从输入大小到块重叠）进行更细粒度的控制
+- 更改输出令牌数（用于OpenAI、Cohere或AI21)
+- 对任何LLM的所有参数（从输入大小到块重叠)进行更细粒度的控制
 
 ## 示例：更改底层LLM
 
@@ -43,11 +43,11 @@ response = query_engine.query("What did the author do after his time at Y Combin
 
 ```
 
-## 示例：更改输出令牌数（用于OpenAI，Cohere，AI21）
+## 示例：更改输出令牌数（用于OpenAI，Cohere，AI21)
 
-默认情况下，输出令牌的数量通常被设置为一些较低的数字（例如，OpenAI的默认值为256）。
+默认情况下，输出令牌的数量通常被设置为一些较低的数字（例如，OpenAI的默认值为256)。
 
-对于OpenAI，Cohere，AI21，您只需要设置`max_tokens`参数（或AI21的maxTokens）。我们将在后台处理文本分块/计算。StableLM由StabilityAI开发。
+对于OpenAI，Cohere，AI21，您只需要设置`max_tokens`参数（或AI21的maxTokens)。我们将在后台处理文本分块/计算。StableLM由StabilityAI开发。
 StableLM很高兴能够帮助用户，但是拒绝做任何可能对用户有害的事情。
 StableLM不仅仅是一个信息源，StableLM还能够写诗、短篇小说，并开玩笑。
 StableLM拒绝参与任何可能伤害人类的事情。使用此方法，您可以使用任何LLM。也许您有一个在本地运行，或者在您自己的服务器上运行。只要实现了类并返回了生成的令牌，它就应该起作用。请注意，我们需要使用提示助手来自定义提示大小，因为每个模型的上下文长度都略有不同。

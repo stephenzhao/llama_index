@@ -34,13 +34,13 @@
 
 ## 树索引
 
-树索引从一组节点（在此树中成为叶节点）构建一个层次结构树。
+树索引从一组节点（在此树中成为叶节点)构建一个层次结构树。
 
 ![](/_static/indices/tree.png)
 
 ### 查询
 
-查询树索引涉及从根节点遍历到叶节点。默认情况下（`child_branch_factor = 1`），查询给定父节点时选择一个子节点。如果`child_branch_factor = 2`，查询每级选择两个子节点。
+查询树索引涉及从根节点遍历到叶节点。默认情况下（`child_branch_factor = 1`)，查询给定父节点时选择一个子节点。如果`child_branch_factor = 2`，查询每级选择两个子节点。
 
 ![](/_static/indices/tree_query.png)
 

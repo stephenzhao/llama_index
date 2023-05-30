@@ -1,4 +1,4 @@
-Playground模块是LlamaIndex中的一种自动测试您的数据（即文档）的方法，可以在多种索引，模型，嵌入，模式等组合中进行测试，以确定哪些最适合您的目的。将继续添加更多选项。
+Playground模块是LlamaIndex中的一种自动测试您的数据（即文档)的方法，可以在多种索引，模型，嵌入，模式等组合中进行测试，以确定哪些最适合您的目的。将继续添加更多选项。
 
 对于每种组合，您都可以比较任何查询的结果，并比较答案，延迟，使用的令牌等。
 
@@ -19,7 +19,7 @@ WikipediaReader = download_loader("WikipediaReader")
 loader = WikipediaReader()
 documents = loader.load_data(pages=['Berlin'])
 
-# 定义多个索引数据结构（向量索引，列表索引）
+# 定义多个索引数据结构（向量索引，列表索引)
 indices = [GPTVectorStoreIndex(documents), GPTTreeIndex(documents)]
 
 # 初始化操场

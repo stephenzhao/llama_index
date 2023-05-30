@@ -92,22 +92,22 @@ for wiki_title in wiki_titles:
 
 ### 定义索引集
 
-我们现在将定义一组索引和图形，以查看您的数据。您可以将每个索引/图形视为解决特定用例的轻量级结构。我们首先将定义一个向量索引，用于每个城市的文档。我们现在将定义一个组合图，以运行**比较/对比**查询（参见[用例文档]（/ use_cases / queries.md））。这个图包含一个基于现有向量索引构建的关键字表。
+我们现在将定义一组索引和图形，以查看您的数据。您可以将每个索引/图形视为解决特定用例的轻量级结构。我们首先将定义一个向量索引，用于每个城市的文档。我们现在将定义一个组合图，以运行**比较/对比**查询（参见[用例文档](/ use_cases / queries.md))。这个图包含一个基于现有向量索引构建的关键字表。
 为此，我们首先要为每个向量索引设置“摘要文本”。
 然后，我们在这些向量索引之上构建一个关键字表，使用这些索引和摘要来构建图。
-查询此图（使用查询转换模块）可以轻松地在不同城市之间进行比较/对比。下面是一个例子。定义统一查询接口
+查询此图（使用查询转换模块)可以轻松地在不同城市之间进行比较/对比。下面是一个例子。定义统一查询接口
 
 现在我们已经定义了一组索引/图，我们想要构建一个外部抽象层，提供统一的查询接口来访问我们的数据结构。这意味着在查询时，我们可以查询这个外部抽象层，并相信正确的索引/图将被用于工作。
 
 有几种方法可以做到这一点，既在我们的框架内，也在框架外！
 - 在现有索引/图上构建一个路由查询引擎
-- 将每个索引/图定义为代理框架（例如LangChain）中的一个工具。
+- 将每个索引/图定义为代理框架（例如LangChain)中的一个工具。
 
 为了本教程的目的，我们采用前者的方法。如果您想了解后者的工作原理，请查看[我们的示例教程](/guides/tutorials/building_a_chatbot.md)。
 
 让我们看一个构建路由器查询引擎以自动“路由”任何查询到您在后台定义的索引/图集的示例。
 
-首先，我们为我们要路由查询的索引/图集定义查询引擎。我们还为每个查询引擎提供一个描述（关于它所持有的数据以及它的用途），以帮助路由器根据特定查询来选择它们。
+首先，我们为我们要路由查询的索引/图集定义查询引擎。我们还为每个查询引擎提供一个描述（关于它所持有的数据以及它的用途)，以帮助路由器根据特定查询来选择它们。
 
 ```python
 from llama_index.tools.query_engine import QueryEngineTool
@@ -118,7 +118,7 @@ query_engine_tools = []
 for wiki_title in wiki_titles:
     index = vector_indices[wiki_title]
     summary = index_summaries[wiki_title]
-    
+
     query_engine = index.as_query_engine(service_context=service_context)
     vector_tool = QueryEngineTool.from_query_engine(
         query_engine,
@@ -174,14 +174,14 @@ router_query_engine = RouterQueryEngine(
 
 统一查询接口的优势在于它可以处理不同类型的查询。
 
-它现在可以处理关于特定城市的查询（通过路由到特定城市向量索引），也可以比较/对比不同的城市。
+它现在可以处理关于特定城市的查询（通过路由到特定城市向量索引)，也可以比较/对比不同的城市。
 
 让我们看看几个例子！
 
 **提出比较/对比问题**
 
 ```python
-# ask a compare/contrast question 
+# ask a compare/contrast question
 response = router_query_engine.query(
     "Compare and contrast the arts and culture of Houston and Boston.",
 )

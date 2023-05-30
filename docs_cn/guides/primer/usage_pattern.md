@@ -1,16 +1,16 @@
 LlamaIndex使用模式
 
 LlamaIndex的一般使用模式如下：
-1.加载文档（手动或通过数据加载器）
+1.加载文档（手动或通过数据加载器)
 2.将文档解析为节点
-3.构建索引（来自节点或文档）
-4.（可选，高级）在其他索引之上构建索引
+3.构建索引（来自节点或文档)
+4.（可选，高级)在其他索引之上构建索引
 5.查询索引
 
 ## 1.加载文档
 
 第一步是加载数据。此数据以“文档”对象的形式表示。
-我们提供了各种[数据加载器]（/ how_to / data_connectors.md），它们将通过“load_data”函数加载文档，例如：
+我们提供了各种[数据加载器](/ how_to / data_connectors.md)，它们将通过“load_data”函数加载文档，例如：
 
 ```python
 from llama_index import SimpleDirectoryReader
@@ -28,8 +28,8 @@ documents = [Document(t) for t in text_list]
 ```
 
 文档表示数据源的轻量级容器。您现在可以选择执行以下其中一步：
-1.将Document对象直接输入索引（参见第3节）。
-2.首先将文档转换为节点对象（参见第2节）。
+1.将Document对象直接输入索引（参见第3节)。
+2.首先将文档转换为节点对象（参见第2节)。
 
 ## 2.将文档解析为节点
 
@@ -63,19 +63,19 @@ nodes = [node1, node2]
 
 ## 3.索引构建
 
-我们现在可以在这些Document对象上构建索引。最简单的高级抽象是在索引初始化期间加载Document对象（如果您直接从步骤1开始并跳过步骤2，则此步骤很重要）。
+我们现在可以在这些Document对象上构建索引。最简单的高级抽象是在索引初始化期间加载Document对象（如果您直接从步骤1开始并跳过步骤2，则此步骤很重要)。
 
 ```python
 fromllama_index导入GPTVectorStoreIndex
 
-索引= GPTVectorStoreIndex.from_documents（文档）
+索引= GPTVectorStoreIndex.from_documents（文档)
 
-您还可以选择直接在一组Node对象上构建索引（这是第2步的延续）。
+您还可以选择直接在一组Node对象上构建索引（这是第2步的延续)。
 
 ```python
 from llama_index import GPTVectorStoreIndex
 
-index = GPTVectorStoreIndex（nodes）
+index = GPTVectorStoreIndex（nodes)
 ```
 
 根据您使用的索引，LlamaIndex可能会调用LLM来构建索引。
@@ -90,11 +90,11 @@ index = GPTVectorStoreIndex（nodes）
 ```python
 from llama_index import StorageContext
 
-storage_context = StorageContext.from_defaults（）
-storage_context.docstore.add_documents（nodes）
+storage_context = StorageContext.from_defaults（)
+storage_context.docstore.add_documents（nodes)
 
-index1 = GPTVectorStoreIndex（nodes，storage_context = storage_context）
-index2 = GPTListIndex（nodes，storage_context = storage_context）
+index1 = GPTVectorStoreIndex（nodes，storage_context = storage_context)
+index2 = GPTListIndex（nodes，storage_context = storage_context)
 ```
 
 **注意**：如果未指定`storage_context`参数，则在构建索引时会隐式为每个索引创建它。您可以通过`index.storage_context`访问与给定索引关联的docstore。
@@ -106,9 +106,9 @@ index2 = GPTListIndex（nodes，storage_context = storage_context）
 ```python
 from llama_index import GPTVectorStoreIndex
 
-index = GPTVectorStoreIndex（[]）
+index = GPTVectorStoreIndex（[])
 for doc in documents：
-    index.insert（doc）
+    index.insert（doc)
 ```
 
 如果要直接插入节点，可以使用`insert_nodes`函数。
@@ -117,8 +117,8 @@ for doc in documents：
 from llama_index import GPTVectorStoreIndex
 
 # nodes：Sequence [Node]
-index = GPTVectorStoreIndex（[]）
-index.insert_nodes（nodes）
+index = GPTVectorStoreIndex（[])
+index.insert_nodes（nodes)
 ```
 
 有关详细信息和示例笔记本，请参阅[Update Index How-To](/how_to/index_structs/update.md)。
@@ -134,7 +134,7 @@ from langchain import OpenAI
 ...
 
 # define LLM
-llm_predictor = LLMPredictor（llm = OpenAI（temperature = 0，model_name =“text-davinci-003”））
+llm_predictor = LLMPredictor（llm = OpenAI（temperature = 0，model_name =“text-davinci-003”))
 
 # define prompt helper
 # set maximum input size
@@ -143,11 +143,11 @@ max_input_size = 4096
 num_output = 256
 # set maximum chunk overlap
 max_chunk_overlap = 20
-prompt_helper = PromptHelper（max_input_size，num_output，max_chunk_overlap）
+prompt_helper = PromptHelper（max_input_size，num_output，max_chunk_overlap)
 
-service_context = ServiceContext.from_defaults（llm_predictor = llm_predictor，prompt_helper = prompt_helper）
+service_context = ServiceContext.from_defaults（llm_predictor = llm_predictor，prompt_helper = prompt_helper)
 
-indexGPTVectorStoreIndex.from_documents（文档，service_context = service_context）
+indexGPTVectorStoreIndex.from_documents（文档，service_context = service_context)
 
 更多详细信息，请参阅[自定义LLM的How-To](/how_to/customization/custom_llms.md)。
 
@@ -166,7 +166,7 @@ set_global_service_context(service_context)
 
 ### 自定义提示
 
-根据所使用的索引，我们使用默认的提示模板来构建索引（以及插入/查询）。
+根据所使用的索引，我们使用默认的提示模板来构建索引（以及插入/查询)。
 有关如何自定义提示的更多详细信息，请参阅[自定义提示How-To](/how_to/customization/custom_prompts.md)。
 
 ### 自定义嵌入
@@ -226,7 +226,7 @@ index = load_index_from_storage(
 构建索引后，您现在可以使用“QueryEngine”查询它。请注意，“查询”只是LLM的输入 - 这意味着您可以使用索引进行问答，但您还可以做更多！
 
 ### 高级API
-首先，您可以使用默认的“QueryEngine”（即使用默认配置）查询索引，如下所示：
+首先，您可以使用默认的“QueryEngine”（即使用默认配置)查询索引，如下所示：
 
 ```python
 query_engine = index.as_query_engine()
@@ -298,9 +298,9 @@ query_engine = RetrieverQueryEngine(retriever)
 response = query_engine.query("What did the author do growing up?")
 ```
 
-每个索引的完整检索器列表（及其简写）都在[查询参考](/reference/query.rst)中有文档。
+每个索引的完整检索器列表（及其简写)都在[查询参考](/reference/query.rst)中有文档。
 
-（setting-response-mode）=
+（setting-response-mode)=
 ### 配置响应合成
 检索器获取相关节点后，`ResponseSynthesizer`通过组合信息合成最终响应。
 
@@ -322,7 +322,7 @@ query_engine = RetrieverQueryEngine.from_args(retriever, response_mode=<response
 - `accumulate`：给定一组`Node`对象和查询，将查询应用于每个`Node`文本
     块，同时将响应累积到数组中。返回所有
     响应的连接字符串。当您需要对每个文本
-    块单独运行相同的查询时很有用。我们还支持高级的节点过滤和增强，以进一步提高检索节点对象的相关性。这可以帮助减少时间/ LLM调用/成本的数量或提高响应质量。例如：* `KeywordNodePostprocessor`：通过`required_keywords`和`exclude_keywords`过滤节点。* `SimilarityPostprocessor`：通过设置相似性分数的阈值来过滤节点（因此仅支持基于嵌入的检索器）* `PrevNextNodePostprocessor`：基于`Node`关系增强检索的`Node`对象的其他相关上下文。要配置所需的节点后处理器：
+    块单独运行相同的查询时很有用。我们还支持高级的节点过滤和增强，以进一步提高检索节点对象的相关性。这可以帮助减少时间/ LLM调用/成本的数量或提高响应质量。例如：* `KeywordNodePostprocessor`：通过`required_keywords`和`exclude_keywords`过滤节点。* `SimilarityPostprocessor`：通过设置相似性分数的阈值来过滤节点（因此仅支持基于嵌入的检索器)* `PrevNextNodePostprocessor`：基于`Node`关系增强检索的`Node`对象的其他相关上下文。要配置所需的节点后处理器：
 ```python
 node_postprocessors = [
     KeywordNodePostprocessor(

@@ -13,7 +13,7 @@
 ### 成本结构概述
 
 #### 不需要LLM调用的索引
-以下索引在构建期间根本不需要LLM调用（0成本）：
+以下索引在构建期间根本不需要LLM调用（0成本)：
 - `GPTListIndex`
 - `GPTSimpleKeywordTableIndex` - 使用正则表达式关键字提取器从每个文档中提取关键字
 - `GPTRAKEKeywordTableIndex` - 使用RAKE关键字提取器从每个文档中提取关键字
@@ -27,20 +27,20 @@
 
 查询时总是会有> = 1个LLM调用，以合成最终答案。
 某些索引在索引构建和查询之间存在成本权衡。例如，`GPTListIndex`
-免费构建，但在列表索引上运行查询（无过滤或嵌入查找）将
+免费构建，但在列表索引上运行查询（无过滤或嵌入查找)将
 调用LLM {math}`N`次。
 
 以下是关于每个索引的一些注释：
 - `GPTListIndex`：默认需要{math}`N`次LLM调用，其中N是节点数。
-- `GPTTreeIndex`：默认需要{math}`\log（N）`次LLM调用，其中N是叶节点数。
-    - 设置`child_branch_factor = 2`将比默认的`child_branch_factor = 1`更昂贵（多项式vs对数），因为我们为每个父节点遍历2个子节点而不是1个。
+- `GPTTreeIndex`：默认需要{math}`\log（N)`次LLM调用，其中N是叶节点数。
+    - 设置`child_branch_factor = 2`将比默认的`child_branch_factor = 1`更昂贵（多项式vs对数)，因为我们为每个父节点遍历2个子节点而不是1个。
 - `GPTKeywordTableIndex`：默认需要LLM调用以提取查询关键字。
-    - 可以执行`index.as_retriever（retriever_mode =“simple”）`或`index.as_retriever（retriever_mode =“rake”）`以在查询文本上也使用正则表达式/ RAKE关键字提取器。
+    - 可以执行`index.as_retriever（retriever_mode =“simple”)`或`index.as_retriever（retriever_mode =“rake”)`以在查询文本上也使用正则表达式/ RAKE关键字提取器。
 
 ### 令牌预测器使用
 
 LlamaIndex提供令牌**预测器**来预测LLM和嵌入调用的令牌使用情况。
-这样，您可以在1）索引构建和2）索引查询之前，估计相应的LLM调用的成本。
+这样，您可以在1)索引构建和2)索引查询之前，估计相应的LLM调用的成本。
 
 #### 使用MockLLMPredictor
 
