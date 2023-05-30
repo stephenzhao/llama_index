@@ -215,7 +215,7 @@ index = GPTVectorStoreIndex.from_documents(
 
 # 从磁盘加载索引
 index = load_index_from_storage(
-    service_context=service_context,    
+    service_context=service_context,
 )
 
 ```[可选，高级]在其他索引之上构建索引
@@ -254,7 +254,7 @@ index = GPTVectorStoreIndex.from_documents(documents)
 
 # configure retriever
 retriever = VectorIndexRetriever(
-    index=index, 
+    index=index,
     similarity_top_k=2,
 )
 
@@ -315,7 +315,7 @@ query_engine = RetrieverQueryEngine.from_args(retriever, response_mode=<response
 - `compact`：在每次LLM调用期间“压缩”提示，以填充尽可能多的`Node`文本块。如果有
     要塞入一个提示的块太多，请通过多个提示“创建和完善”答案。
 - `tree_summarize`：给定一组`Node`对象和查询，递归构建树
-    并将根节点作为响应返回。适合汇总目的。
+    并将根节点作为响应返回。适用于读取摘要
 - `no_text`：仅运行检索器以获取将发送到LLM的节点，
     而不实际发送它们。然后可以通过检查`response.source_nodes`来检查它们。
     响应对象在第5节中有更详细的介绍。
@@ -326,7 +326,7 @@ query_engine = RetrieverQueryEngine.from_args(retriever, response_mode=<response
 ```python
 node_postprocessors = [
     KeywordNodePostprocessor(
-        required_keywords=["Combinator"], 
+        required_keywords=["Combinator"],
         exclude_keywords=["Italy"]
     )
 ]

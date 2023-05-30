@@ -20,7 +20,7 @@
 
 #### 需要LLM调用的索引
 以下索引确实需要在构建期间调用LLM：
-- `GPTTreeIndex` - 使用LLM分层汇总文本以构建树
+- `GPTTreeIndex` - 使用LLM分层摘要文本以构建树
 - `GPTKeywordTableIndex` - 使用LLM从每个文档中提取关键字
 
 ### 查询时间
