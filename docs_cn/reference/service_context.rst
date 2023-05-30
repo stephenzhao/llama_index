@@ -1,0 +1,1 @@
+服务上下文容器是LlamaIndex索引和查询类的实用容器。该容器包含以下常用于配置每个索引和查询的对象，例如LLMPredictor（用于配置LLM），PromptHelper（用于配置输入大小/块大小），BaseEmbedding（用于配置嵌入模型）等。llama_index.indices.service_context模块提供了服务上下文类，其成员和继承成员可以用于配置索引和查询。
