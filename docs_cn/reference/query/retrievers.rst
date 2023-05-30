@@ -18,13 +18,13 @@ _Ref-Retrievers:
    retrievers/tree.rst
    retrievers/vector_store.rst
 
-注意：我们的结构化索引（例如GPTPandasIndex，GPTSQLStructStoreIndex）没有任何检索器，因为它们不是设计用于检索器API的。
+注意：我们的结构化索引（例如GPTPandasIndex，GPTSQLStructStoreIndex)没有任何检索器，因为它们不是设计用于检索器API的。
 有关更多详细信息，请参阅:ref:`查询引擎<Ref-Query-Engines>`页面。
 
 附加检索器
 ^^^^^^^^^^^^^^^^^^^^^
 
-这里我们展示附加检索器类; 这些类可以用新的功能（例如查询转换）来增强现有的检索器。
+这里我们展示附加检索器类; 这些类可以用新的功能（例如查询转换)来增强现有的检索器。
 
 .. toctree::
    :maxdepth: 1

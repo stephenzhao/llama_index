@@ -10,7 +10,7 @@ LlamaIndex模块提供插件式数据加载器、数据结构和查询接口，�
 
 ### 全栈Web应用程序
 
-LlamaIndex可以集成到下游的全栈Web应用程序中。它可以用于后端服务器（如Flask），打包到Docker容器中，或者直接在Streamlit等框架中使用。
+LlamaIndex可以集成到下游的全栈Web应用程序中。它可以用于后端服务器（如Flask)，打包到Docker容器中，或者直接在Streamlit等框架中使用。
 
 我们提供教程和资源来帮助您开始这方面的工作。
 

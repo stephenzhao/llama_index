@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
 _flask_demo.py_
 
-如果您运行此文件（`python flask_demo.py`），它将在端口5601上启动服务器。如果您访问`http://localhost:5601/`，您将在浏览器中看到“Hello World！”文本呈现。很好！
+如果您运行此文件（`python flask_demo.py`)，它将在端口5601上启动服务器。如果您访问`http://localhost:5601/`，您将在浏览器中看到“Hello World！”文本呈现。很好！
 
 下一步是决定我们想要在服务器中包含哪些功能，以及开始使用LlamaIndex。
 
@@ -84,7 +84,7 @@ def query_index():
 - 如果缺少`text`参数，则我们返回错误消息和适当的HTML响应代码
 - 否则，我们查询索引，并将响应作为字符串返回
 
-您可以在浏览器中测试的完整查询示例可能如下所示：`http://localhost:5601/query?text=what did the author do growing up`（按下回车后，浏览器将将空格转换为“％20”字符）。
+您可以在浏览器中测试的完整查询示例可能如下所示：`http://localhost:5601/query?text=what did the author do growing up`（按下回车后，浏览器将将空格转换为“％20”字符)。
 
 一切看起来都很好！我们现在有一个功能完备的API。使用您自己的文档，您可以轻松为任何应用程序提供接口，以调用Flask API并获得查询答案。
 
@@ -96,7 +96,7 @@ def query_index():
 
 一种选择可能是为每个用户或组创建一个索引，并从S3存储和获取内容。但是对于这个例子，我们假设有一个本地存储的索引，用户可以与之交互。
 
-为了处理并发上传并确保对索引进行顺序插入，我们可以使用`BaseManager` pyt我们将所有的索引操作（初始化，查询，插入）移动到“index_server”的“BaseManager”中，从我们的Flask服务器调用它，以提供使用单独的服务器和锁的顺序访问索引的hon包。这听起来很可怕，但其实并不是那么糟糕！
+为了处理并发上传并确保对索引进行顺序插入，我们可以使用`BaseManager` pyt我们将所有的索引操作（初始化，查询，插入)移动到“index_server”的“BaseManager”中，从我们的Flask服务器调用它，以提供使用单独的服务器和锁的顺序访问索引的hon包。这听起来很可怕，但其实并不是那么糟糕！
 
 我们的`index_server.py`将看起来像这样：
 
@@ -176,7 +176,7 @@ if __name__ == "__main__":
 
 _flask_demo.py_
 
-两个主要的变化是连接到我们现有的`BaseManager`服务器并注册函数，以及在`/query`端点中通过管理器调用函数。需要注意的是，`BaseManager`服务器不会按我们期望的那样返回对象。为了将返回值转换为其原始对象，我们调用`_getvalue（）`函数。
+两个主要的变化是连接到我们现有的`BaseManager`服务器并注册函数，以及在`/query`端点中通过管理器调用函数。需要注意的是，`BaseManager`服务器不会按我们期望的那样返回对象。为了将返回值转换为其原始对象，我们调用`_getvalue（)`函数。
 
 如果我们允许用户上传自己的文档，我们可能应该先从文档文件夹中删除保罗·格雷厄姆的文章，因此让我们先做这件事。然后，让我们添加一个上传文件的端点！首先，让我们定义我们的Flask端点函数：
 
@@ -231,7 +231,7 @@ def insert_into_index(doc_text, doc_id=None):
     with lock:
         index.insert(documen很简单！如果我们启动`index_server.py`和`flask_demo.py`两个Python文件，我们就拥有了一个可以处理多个请求以将文档插入向量索引并响应用户查询的Flask API服务器！
 
-为了支持前端的一些功能，我调整了Flask API的一些响应样式，并添加了一些功能来跟踪哪些文档存储在索引中（LlamaIndex目前没有以用户友好的方式支持这一点，但我们可以自行增强它！）。最后，我使用`Flask-cors`Python包为服务器添加了CORS支持。
+为了支持前端的一些功能，我调整了Flask API的一些响应样式，并添加了一些功能来跟踪哪些文档存储在索引中（LlamaIndex目前没有以用户友好的方式支持这一点，但我们可以自行增强它！)。最后，我使用`Flask-cors`Python包为服务器添加了CORS支持。
 
 查看存储库中完整的`flask_demo.py`和`index_server.py`脚本以及`requirements.txt`文件和用于部署的示例`Dockerfile`。
 
@@ -273,7 +273,7 @@ const fetchDocuments = async (): Promise<Document[]> => {
 };
 ```
 
-正如您所见，我们向Flask服务器（这里假设在本地主机上运行）。请注意，我们需要包括`mode：'cors'`选项，因为我们正在进行外部请求。
+正如您所见，我们向Flask服务器（这里假设在本地主机上运行)。请注意，我们需要包括`mode：'cors'`选项，因为我们正在进行外部请求。
 
 然后，我们检查响应是否正常，如果是，获取响应json并返回它。在这里，响应json是在同一个文件中定义的`Document`对象列表。
 
@@ -349,6 +349,6 @@ export default insertDocument;
 
 本指南涵盖了大量信息，从如何构建Flask服务器到如何使用React来调用API。我希望这有助于你开始使用Flask和React来构建你自己的应用程序！我们从用Python编写的基本的“Hello World”Flask服务器开始，到一个完全可运行的LlamaIndex后端，以及如何将其连接到前端应用程序。
 
-正如您所看到的，我们可以轻松地增强和包装LlamaIndex提供的服务（比如小型外部文档跟踪器），以帮助在前端提供良好的用户体验。
+正如您所看到的，我们可以轻松地增强和包装LlamaIndex提供的服务（比如小型外部文档跟踪器)，以帮助在前端提供良好的用户体验。
 
-您可以采用这种方式添加许多功能（多索引/用户支持，将对象保存到S3，添加Pinecone向量服务器等）。当您在阅读本文后构建应用程序时，请务必在Discord中分享最终结果！祝你好运！:muscle:
+您可以采用这种方式添加许多功能（多索引/用户支持，将对象保存到S3，添加Pinecone向量服务器等)。当您在阅读本文后构建应用程序时，请务必在Discord中分享最终结果！祝你好运！:muscle:

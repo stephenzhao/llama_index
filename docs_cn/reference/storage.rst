@@ -1,6 +1,6 @@
 存储上下文
 =================
-LlamaIndex提供了关于节点、索引和向量存储的核心抽象。关键的抽象是`StorageContext`-它包含底层的`BaseDocumentStore`（用于节点）、`BaseIndexStore`（用于索引）和`VectorStore`（用于向量）。
+LlamaIndex提供了关于节点、索引和向量存储的核心抽象。关键的抽象是`StorageContext`-它包含底层的`BaseDocumentStore`（用于节点)、`BaseIndexStore`（用于索引)和`VectorStore`（用于向量)。
 
 文档/节点和索引存储依赖于一个共同的`KVStore`抽象，详情参见下文。
 
@@ -17,7 +17,7 @@ LlamaIndex提供了关于节点、索引和向量存储的核心抽象。关键�
    storage/vector_store.rst
    storage/kv_store.rst
 
-| 
+|
 
 .. toctree::
    :maxdepth: 1

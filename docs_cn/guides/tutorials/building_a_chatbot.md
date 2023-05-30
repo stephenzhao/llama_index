@@ -53,9 +53,9 @@ for year in years:
 
 ```python
 # 初始化简单的向量索引+全局向量索引
-service_context = ServiceContext.from_defaults(chunk_size_li我们使用Langchain来设置外部聊天机器人代理，它可以访问一组工具。LlamaIndex提供了一些索引和图形的包装，以便它们可以轻松地被Langchain访问。我们希望为每个索引（对应于给定的年份）以及图定义一个单独的工具，我们可以在一个中央“LlamaToolkit”接口下定义所有工具。
+service_context = ServiceContext.from_defaults(chunk_size_li我们使用Langchain来设置外部聊天机器人代理，它可以访问一组工具。LlamaIndex提供了一些索引和图形的包装，以便它们可以轻松地被Langchain访问。我们希望为每个索引（对应于给定的年份)以及图定义一个单独的工具，我们可以在一个中央“LlamaToolkit”接口下定义所有工具。
 
-下面，我们为我们的图定义一个“IndexToolConfig”。请注意，我们还导入了一个“DecomposeQueryTransform”模块，用于图中每个向量索引中的使用-这允许我们将整个查询“分解”为可以从每个子索引回答的查询（见下面的示例）。
+下面，我们为我们的图定义一个“IndexToolConfig”。请注意，我们还导入了一个“DecomposeQueryTransform”模块，用于图中每个向量索引中的使用-这允许我们将整个查询“分解”为可以从每个子索引回答的查询（见下面的示例)。
 
 最后，我们将这些配置与我们的“LlamaToolkit”结合起来：最后，我们调用`create_llama_chat_agent`来创建我们的Langchain聊天机器人代理，它可以访问我们上面定义的5个工具：
 
@@ -104,7 +104,7 @@ Action: Vector Index 2020
 Action Input: Risk Factors
 ...
 
-Observation: 
+Observation:
 
 Risk Factors
 
@@ -135,7 +135,7 @@ Action Input: Compare/contrast the risk factors described in the Uber 10-K acros
 > New query:  What are the risk factors described in the Uber 10-K for the 2022 fiscal year?
 INFO:llama_index.token_counter.token_counter:> [query] Total LLM token usage: 964 tokens
 INFO:llama_index.token_counter.token_counter:> [query] Total embedding token usage: 18 tokens
-> Got response: 
+> Got response:
 The risk factor
 翻译结果：
 最后，我们可以用各种查询来测试代理。如果我们用一个简单的“hello”查询来测试它，代理不会使用任何工具。如果我们用一个关于某一年度10-k的查询来测试它，代理将使用相关的向量索引工具。最后，如果我们用一个查询来比较/对比跨年度的风险因素，代理将使用图形索引工具。Uber 10-K报告中描述的2021财年的风险因素包括：司机分类可能发生变化的潜在风险，竞争力可能增加的潜在风险，可能出现的技术问题，可能出现的政策变化，可能出现的政府监管，可能出现的诉讼，可能出现的投资者和消费者信心变化，可能出现的经济不确定性，可能出现的技术和产品发展问题，可能出现的网络安全问题，可能出现的税收变化，可能出现的收入和利润变化，可能出现的货币汇率变化，可能出现的成本和供应链管理问题，可能出现的社会和政治不稳定性，可能出现的环境和自然灾害，以及可能出现的其他风险。观察：2020年，风险因素包括疫苗普及的时机、政府当局可能采取的进一步行动、对司机业务的进一步影响。

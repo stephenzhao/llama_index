@@ -52,13 +52,13 @@ print(str(eval_result))
 ### 来源评估
 
 此模式的评估将为每个源节点返回“YES”/“NO”。定义评估器
-evaluator = ResponseEvaluator（service_context = service_context）
+evaluator = ResponseEvaluator（service_context = service_context)
 
 #查询索引
-query_engine = vector_index.as_query_engine（）
-response = query_engine.query（“美国革命时期纽约市发生了哪些战斗？”）
-eval_result = evaluator.evaluate_source_nodes（response）
-打印（str（eval_result））
+query_engine = vector_index.as_query_engine（)
+response = query_engine.query（“美国革命时期纽约市发生了哪些战斗？”)
+eval_result = evaluator.evaluate_source_nodes（response)
+打印（str（eval_result))
 
 您将获得一个“是”/“否”的列表，对应于response.source_nodes中的每个源节点。
 

@@ -5,22 +5,22 @@
 ###### Meru - 密集数据检索API
 
 托管的API服务。包括基于LlamaIndex构建的“密集数据检索”API，用户可以上传文档并对其进行查询。
-[[网站]]（https://www.usemeru.com/densedataretrieval）
+[[网站]](https://www.usemeru.com/densedataretrieval)
 
 ###### Algovera
 
 使用构建块构建AI工作流程。许多基于LlamaIndex的工作流程。
 
-[[网站]]（https://app.algovera.ai/workflows）。
+[[网站]](https://app.algovera.ai/workflows)。
 
 ###### ChatGPT LlamaIndex
 
 允许用户上传长文档并与机器人聊天的界面。
-[[推文线程]]（https://twitter.com/s_jobs6/status/1618346125697875968?s=20&t=RJhQu2mD0-zZNGfq65xodA）
+[[推文线程]](https://twitter.com/s_jobs6/status/1618346125697875968?s=20&t=RJhQu2mD0-zZNGfq65xodA)
 
 ###### AgentHQ
 
-一个用于构建代理的Web工具，与LlamaIndex数据结构交互。[[网站]]（https://app.agent-hq.io/）
+一个用于构建代理的Web工具，与LlamaIndex数据结构交互。[[网站]](https://app.agent-hq.io/)
 
 ###### PapersGPT
 
@@ -31,36 +31,36 @@
 - Github Repos
 等等。
 
-[[推文线程]]（https://twitter.com/thejessezhang/status/1615390646763945991?s=20&t=eHvhmIaaaoYFyPSzDRNGtA）[[网站]]（https://jessezhang.org/llmdemo）
+[[推文线程]](https://twitter.com/thejessezhang/status/1615390646763945991?s=20&t=eHvhmIaaaoYFyPSzDRNGtA)[[网站]](https://jessezhang.org/llmdemo)
 
 ###### VideoQues + DocsQues
 
 **VideoQues**：一个可以回答您在YouTube视频上的查询的工具。
-[[LinkedIn post here]]（https://www.linkedin.com/posts/ravidesetty_ai-ml-dl-activity-7020599110953050112-EJA_/?utm_source=share&utm_medium=member_desktop）。
+[[LinkedIn post here]](https://www.linkedin.com/posts/ravidesetty_ai-ml-dl-activity-7020599110953050112-EJA_/?utm_source=share&utm_medium=member_desktop)。
 
-**DocsQues**：一个可以回答您在较长文档（包括.pdf！）上的问题的工具。
-[[LinkedIn post here]]（https://www.linkedin.com/posts/ravidesetty_artificialintelligence-machinelearning-recruiters-activity-7016972785293946880-rhKC?utm_source=share&utm_medium=member_desktop）。
+**DocsQues**：一个可以回答您在较长文档（包括.pdf！)上的问题的工具。
+[[LinkedIn post here]](https://www.linkedin.com/posts/ravidesetty_artificialintelligence-machinelearning-recruiters-activity-7016972785293946880-rhKC?utm_source=share&utm_medium=member_desktop)。
 
 ###### PaperBrain
 
 一个访问/理解研究论文的平台。
 
-[[推文线程]]（https://twitter.com/mdarshad1000/status/1619824637898264578?s=20&t=eHvhmIaaaoYFyPSzDRNGtA）。
+[[推文线程]](https://twitter.com/mdarshad1000/status/1619824637898264578?s=20&t=eHvhmIaaaoYFyPSzDRNGtA)。
 
 ###### CACTUS
 
 在LinkedIn搜索结果上进行上下文搜索。
-[[LinkedIn post here]]（https://www.linkedin.com/posts/mathewteoh_chromeextension-chatgpt-python-activity-7019362515566403584-ryqW?utm_source=share&utm_medium=member_desktop）。
+[[LinkedIn post here]](https://www.linkedin.com/posts/mathewteoh_chromeextension-chatgpt-python-activity-7019362515566403584-ryqW?utm_source=share&utm_medium=member_desktop)。
 
 ###### 个人笔记聊天机器人
 
 一个可以回答Obsidian笔记目录上的问题的聊天机器人。
-[[推文线程]]（https://twitter.com/Sarah_A_Bentley/status/1611069576099336207?s=20&t=IjPLK3msACQjEBYxJJxj4w）。
+[[推文线程]](https://twitter.com/Sarah_A_Bentley/status/1611069576099336207?s=20&t=IjPLK3msACQjEBYxJJxj4w)。
 
 ###### RHOBH AMA
 
 问有关比佛利山庄的真人秀的问题。
-[[推文线程]]（https://twitter.com/YourBuddyConner/status/1616504644439789568?s=20&t=bCHa3im7mjoIXLuKo5PttQ）[[网站]]（https://realhousewivesai.com/）
+[[推文线程]](https://twitter.com/YourBuddyConner/status/1616504644439789568?s=20&t=bCHa3im7mjoIXLuKo5PttQ)[[网站]](https://realhousewivesai.com/)
 
 ###### Mynd
 

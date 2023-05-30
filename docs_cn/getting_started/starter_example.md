@@ -1,4 +1,4 @@
-这里是使用LlamaIndex的入门示例。首先，确保您已经遵循[安装]（安装.md）步骤。
+这里是使用LlamaIndex的入门示例。首先，确保您已经遵循[安装](安装.md)步骤。
 
 ###下载
 
@@ -25,7 +25,7 @@ README.md              llama_index/             setup.py
 $ cd examples/paul_graham_essay
 ```
 
-其中包含LlamaIndex示例，围绕Paul Graham的文章[“我做了什么”]（http://paulgraham.com/worked.html）。在`TestEssay.ipynb`中已经提供了一套全面的示例。为了本教程的目的，我们可以专注于让LlamaIndex起步的简单示例。
+其中包含LlamaIndex示例，围绕Paul Graham的文章[“我做了什么”](http://paulgraham.com/worked.html)。在`TestEssay.ipynb`中已经提供了一套全面的示例。为了本教程的目的，我们可以专注于让LlamaIndex起步的简单示例。
 
 ###构建和查询索引
 
@@ -38,7 +38,7 @@ documents = SimpleDirectoryReader('data').load_data()
 index = GPTVectorStoreIndex.from_documents(documents)
 ```
 
-这将在`data`文件夹中构建一个索引（在这种情况下，只包含文章文本）。然后运行以下内容：
+这将在`data`文件夹中构建一个索引（在这种情况下，只包含文章文本)。然后运行以下内容：
 
 ```python
 query_engine = index.as_query_engine()
@@ -65,7 +65,7 @@ logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 ###保存和加载
 
 默认情况下，数据存储在内存中。
-要持久化到磁盘（在`./storage`下）：
+要持久化到磁盘（在`./storage`下)：
 
 ```python
 index.storage_context.persist()

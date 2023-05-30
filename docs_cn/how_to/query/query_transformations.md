@@ -8,11 +8,11 @@ LlamaIndex允许您对索引结构执行*查询转换*。查询转换是将查�
 
 #### 用例
 查询转换有多种用例：
-- 将初始查询转换为更容易嵌入的形式（例如HyDE）
-- 将初始查询转换为可以更容易从数据中获得答案的子问题（单步查询分解）
-- 将初始查询分解为多个子问题，这些子问题可以更容易地单独解决。 （多步查询分解）
+- 将初始查询转换为更容易嵌入的形式（例如HyDE)
+- 将初始查询转换为可以更容易从数据中获得答案的子问题（单步查询分解)
+- 将初始查询分解为多个子问题，这些子问题可以更容易地单独解决。 （多步查询分解)
 
-### HyDE（假设文档嵌入）
+### HyDE（假设文档嵌入)
 
 [HyDE](http://boston.lti.cs.cmu.edu/luyug/HyDE/HyDE.pdf)是一种技术，给定自然语言查询，首先生成假设文档/答案。然后使用这个假设文档进行嵌入查找，而不是原始查询。
 
@@ -41,7 +41,7 @@ print(response)
 
 ### 单步查询分解
 
-最近的一些方法（例如[self-ask](https://ofir.io/self-ask.pdf)，[ReAct](https://arxiv.org/abs/2210.03629)）建议，当LLM将问题分解为较小的步骤时，它们在回答复杂问题时表现更好。我们发现，对于需要知识增强的查询也是如此。
+最近的一些方法（例如[self-ask](https://ofir.io/self-ask.pdf)，[ReAct](https://arxiv.org/abs/2210.03629))建议，当LLM将问题分解为较小的步骤时，它们在回答复杂问题时表现更好。我们发现，对于需要知识增强的查询也是如此。
 
 如果您的查询很复杂，不同的部分可以被分解为更容易回答的子问题，并且可以使用查询转换来实现。您的知识库可以回答围绕整个查询的不同“子查询”。
 
@@ -71,13 +71,13 @@ decompose_transform = DecomposeQueryTransform(
 # 配置检索器
 vector_query_engine = vector_index.as_query_engine()
 vector_query_engine = TransformQueryEngine(
-    vector_query_engine, 
+    vector_query_engine,
     query_transform=decompose_transform
     transform_extra_info={'index_summary': vector_index.index_struct.summary}
 )
 custom_query_engines = {
     vector_index.index_id: vector_query_engine
-} 
+}
 
 # 查询
 query_str = (
@@ -94,7 +94,7 @@ response = query_engine.query(query_str)
 多步查询转换是基于现有的单步查询转换方法的概括。
 
 给定初始的复杂查询，将对索引进行查询转换和执行。从查询中检索响应。
-给定响应（以及先前的响应）和查询，也可以对索引提出后续问题。这种技术允许将查询运行到单个知识源，直到查询满足所有问题为止。
+给定响应（以及先前的响应)和查询，也可以对索引提出后续问题。这种技术允许将查询运行到单个知识源，直到查询满足所有问题为止。
 
 下面是一个示例图片。
 

@@ -59,5 +59,5 @@ service_context = ServiceContext(
 ServiceContext封装了用于创建索引和运行查询的资源。可以在服务上下文中设置以下可选项：llm_predictor：用于生成对查询的自然语言响应的LLM；embed_model：用于生成文本的向量表示的嵌入模型；prompt_helper：定义发送到LLM的文本设置的PromptHelper对象；node_parser：将文档转换为节点的解析器；chunk_size_limit：节点的最大大小；callback_managaer：在事件上调用其处理程序的回调管理器对象，提供基本的日志记录和跟踪功能。可以通过设置全局服务上下文来为ServiceContext指定不同的默认值。使用全局服务上下文时，调用`ServiceContext.from_defaults()`时未提供的任何属性都将从您的全局服务上下文中提取。然后，设置全局服务上下文对象：
 ```python
 from llama_index import set_global_service_context
-set_global_service_context（service_context）
+set_global_service_context（service_context)
 ```

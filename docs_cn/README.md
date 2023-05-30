@@ -14,7 +14,7 @@ LlamaIndex文档
 git clone https://github.com/jerryjliu/llama_index.git && cd llama_index
 ```
 
-安装构建文档所需的所有依赖项（主要是`sphinx`及其扩展）：
+安装构建文档所需的所有依赖项（主要是`sphinx`及其扩展)：
 
 ```bash
 pip install -r docs/requirements.txt

@@ -1,12 +1,12 @@
 欢迎来到LlamaIndex🦙！
 =====================================
 
-LlamaIndex（GPT Index）是一个用于您的LLM应用程序的数据框架。
+LlamaIndex（GPT Index)是一个用于您的LLM应用程序的数据框架。
 
 - Github：https://github.com/jerryjliu/llama_index
 - PyPi：
    - LlamaIndex：https://pypi.org/project/llama-index/。
-   - GPT Index（重复）：https://pypi.org/project/gpt-index/。
+   - GPT Index（重复)：https://pypi.org/project/gpt-index/。
 - Twitter：https://twitter.com/llama_index
 - Discord https://discord.gg/dGcwcsnxhU
 
@@ -32,12 +32,12 @@ LlamaIndex（GPT Index）是一个用于您的LLM应用程序的数据框架。
 ^^^^^^^^^^^^^^^^^
 这就是 **LlamaIndex** 的用武之地。 LlamaIndex是一个“数据框架”，可帮助您构建LLM应用程序。它提供以下工具：
 
-- 提供 **数据连接器** 以摄取您现有的数据源和数据格式（API，PDF，文档，SQL等）
-- 提供结构化您的数据（索引，图）的方法，以便可以轻松地与LLMs一起使用此数据。
+- 提供 **数据连接器** 以摄取您现有的数据源和数据格式（API，PDF，文档，SQL等)
+- 提供结构化您的数据（索引，图)的方法，以便可以轻松地与LLMs一起使用此数据。
 - 提供 **高级检索/查询界面** ：输入任何LLM输入提示，返回检索的上下文和知识增强的输出。
-- 允许与外部应用程序框架（例如LangChain，Flask，Docker，ChatGPT等）轻松集成。
+- 允许与外部应用程序框架（例如LangChain，Flask，Docker，ChatGPT等)轻松集成。
 
-LlamaIndex为初存用户和高级用户提供工具。我们的高级API允许初存用户使用LlamaIndex在5行代码中摄取和查询其数据。我们的低级API允许高级用户自定义和扩展任何模块（数据连接器，索引，检索器，查询引擎，重新排序模块），以满足其需求。
+LlamaIndex为初存用户和高级用户提供工具。我们的高级API允许初存用户使用LlamaIndex在5行代码中摄取和查询其数据。我们的低级API允许高级用户自定义和扩展任何模块（数据连接器，索引，检索器，查询引擎，重新排序模块)，以满足其需求。
 
 
 .. toctree::

@@ -5,25 +5,25 @@ LlamaIndex提供多个与向量存储/向量数据库的集成点：
 1. LlamaIndex可以将向量存储本身用作索引。与其他索引一样，此索引可以存储文档并用于回答查询。
 2. LlamaIndex可以从向量存储中加载数据，类似于任何其他数据连接器。然后可以在LlamaIndex数据结构中使用此数据。
 
-（vector-store-index）=
+（vector-store-index)=
 
 ## 使用向量存储作为索引
 
 LlamaIndex还支持不同的向量存储作为`GPTVectorStoreIndex`的存储后端。
 
-- Chroma（`ChromaReader`）[安装](https://docs.trychroma.com/getting-started)
-- DeepLake（`DeepLakeReader`）[安装](https://docs.deeplake.ai/en/latest/Installation.html)
-- Qdrant（`QdrantReader`）[安装](https://qdrant.tech/documentation/install/) [Python Client](https://qdrant.tech/documentation/install/#python-client)
-- Weaviate（`WeaviateReader`）。[安装](https://weaviate.io/developers/weaviate/installation)。[Python Client](https://weaviate.io/developers/weaviate/client-libraries/python)。
-- Pinecone（`PineconeReader`）。[安装/快速入门](https://docs.pinecone.io/docs/quickstart)。
-- Faiss（`FaissReader`）。[安装](https://github.com/facebookresearch/faiss/blob/main/INSTALL.md)。
-- Milvus（`MilvusReader`）。[安装](https://milvus.io/docs)
-- Zilliz（`MilvusReader`）。[快速入门](https://zilliz.com/doc/quick_start)
-- MyScale（`MyScaleReader`）。[快速入门](https://docs.myscale.com/en/quickstart/)。[安装/Python Client](https://docs.myscale.com/en/python-client/)。
+- Chroma（`ChromaReader`)[安装](https://docs.trychroma.com/getting-started)
+- DeepLake（`DeepLakeReader`)[安装](https://docs.deeplake.ai/en/latest/Installation.html)
+- Qdrant（`QdrantReader`)[安装](https://qdrant.tech/documentation/install/) [Python Client](https://qdrant.tech/documentation/install/#python-client)
+- Weaviate（`WeaviateReader`)。[安装](https://weaviate.io/developers/weaviate/installation)。[Python Client](https://weaviate.io/developers/weaviate/client-libraries/python)。
+- Pinecone（`PineconeReader`)。[安装/快速入门](https://docs.pinecone.io/docs/quickstart)。
+- Faiss（`FaissReader`)。[安装](https://github.com/facebookresearch/faiss/blob/main/INSTALL.md)。
+- Milvus（`MilvusReader`)。[安装](https://milvus.io/docs)
+- Zilliz（`MilvusReader`)。[快速入门](https://zilliz.com/doc/quick_start)
+- MyScale（`MyScaleReader`)。[快速入门](https://docs.myscale.com/en/quickstart/)。[安装/Python Client](https://docs.myscale.com/en/python-client/)。
 
 详细的API参考[在这里](/reference/indices/vector_store.rst)。
 
-与LlamaIndex中的任何其他索引（树，关键字表，列表）一样，可以在任何文档集合上构建`GPTVectorStoreIndex`。我们在索引中使用向量存储来存储输入文本块的嵌入。
+与LlamaIndex中的任何其他索引（树，关键字表，列表)一样，可以在任何文档集合上构建`GPTVectorStoreIndex`。我们在索引中使用向量存储来存储输入文本块的嵌入。
 
 一旦构建完成，就可以使用索引进行查询。
 
@@ -69,7 +69,7 @@ response = query_engine.query("What did the author do growing up?")
 以下是构建各种支持的向量存储的更多示例。
 
 **Redis**
-首先，启动Redis-Stack（或从Redis提供商获取url）
+首先，启动Redis-Stack（或从Redis提供商获取url)
 
 ```bash
 docker run --name redis-vecdb -d -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
@@ -120,7 +120,7 @@ vector_store = FaissVectorStore(faiss_index)
 
 # 注意：由于faiss索引是内存中的，因此我们需要显式调用
 #       vector_store.persist()或storage_context.persist()将其保存到磁盘。
-#       persist（）接受可选参数persist_path。如果没有给出，将使用默认路径。
+#       persist（)接受可选参数persist_path。如果没有给出，将使用默认路径。
 storage_context.persist()
 ```
 
@@ -141,11 +141,11 @@ client = weaviate.Client(
 
 # 构建
 vector_store = WeaviateVectorStore(client)
-```**注意**：`MilvusVectorStore`依赖于`pymilvus`库。如果尚未安装，请使用`pip install pymilvus`。如果在构建`grpcio`的轮子时遇到困难，请检查是否使用了python 3.11（已知的问题：https://github.com/milvus-io/pymilvus/issues/1308），并尝试降级。
+```**注意**：`MilvusVectorStore`依赖于`pymilvus`库。如果尚未安装，请使用`pip install pymilvus`。如果在构建`grpcio`的轮子时遇到困难，请检查是否使用了python 3.11（已知的问题：https://github.com/milvus-io/pymilvus/issues/1308)，并尝试降级。
 
 **Zilliz**
 
-- Zilliz Cloud（Milvus的托管版本）使用Milvus Index，带有一些额外的参数。
+- Zilliz Cloud（Milvus的托管版本)使用Milvus Index，带有一些额外的参数。
 
 ```python
 import pymilvus
@@ -163,7 +163,7 @@ vector_store = MilvusVectorStore(
 )
 ```
 
-**注意**：`MilvusVectorStore`LlamaIndex支持从以下来源加载数据。有关更多详细信息和API文档，请参阅[数据连接器]（/ how_to / data_connectors.md）。
+**注意**：`MilvusVectorStore`LlamaIndex支持从以下来源加载数据。有关更多详细信息和API文档，请参阅[数据连接器](/ how_to / data_connectors.md)。
 
 Chroma存储文档和向量。这是如何使用Chroma的示例：
 
@@ -189,11 +189,11 @@ response = query_engine.query("<query_text>")
 display(Markdown(f"<b>{response}</b>"))
 ```
 
-[示例笔记本可以在这里找到]（https://github.com/jerryjliu/llama_index/tree/main/docs/examples/vector_stores）。
+[示例笔记本可以在这里找到](https://github.com/jerryjliu/llama_index/tree/main/docs/examples/vector_stores)。
 
 ## 使用数据连接器从向量存储加载数据
 
-LlamaIndex支持从以下来源加载数据。有关更多详细信息和API文档，请参阅[数据连接器]（/ how_to / data_connectors.md）。
+LlamaIndex支持从以下来源加载数据。有关更多详细信息和API文档，请参阅[数据连接器](/ how_to / data_connectors.md)。
 
 Chroma存储文档和向量。这是如何使用Chroma的示例：
 
@@ -244,14 +244,14 @@ documents = reader.load_data(collection_name="demo", query_vector=query_vector, 
 
 ```pyt# 选项1：指定class_name和属性
 
-# 1）使用class_name和属性加载数据
+# 1)使用class_name和属性加载数据
 documents = reader.load_data(
     class_name="<class_name>",
     properties=["property1", "property2", "..."],
     separate_documents=True
 )
 
-# 2）示例GraphQL查询
+# 2)示例GraphQL查询
 query = """
 {
     Get {
