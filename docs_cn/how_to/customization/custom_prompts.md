@@ -27,7 +27,7 @@ qa_template = Prompt(template)
 
 ### 修改索引构建中使用的提示
 不同的索引在构建过程中使用不同类型的提示（有些根本不使用提示）。
-例如，`GPTTreeIndex`使用`SummaryPrompt`来分层汇总节点，`GPTKeywordTableIndex`使用`KeywordExtractPrompt`来提取关键字。
+例如，`GPTTreeIndex`使用`SummaryPrompt`来分层摘要节点，`GPTKeywordTableIndex`使用`KeywordExtractPrompt`来提取关键字。
 
 有两种等效的方法可以覆盖提示：
 1. 通过默认节点构造器
